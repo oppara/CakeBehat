@@ -1,11 +1,9 @@
 <?php
 
-// define('BEHAT_ROOT', VENDORS . 'Behat' . DS);
-define('BEHAT_PHP_BIN_PATH',    '/usr/bin/env php');
-// define('BEHAT_BIN_PATH',        BEHAT_ROOT . 'bin/behat.php');
 define('BEHAT_VERSION',         'DEV');
-require_once 'phar://'.dirname(__FILE__).'/behat-2.1.3.phar/autoload.php';
-require_once 'mink-1.2.0.phar';
+define('CAKEBEHAT_ROOT',         dirname(__FILE__));
+
+require dirname(dirname(dirname(__FILE__))).DS.'vendor/autoload.php';
 
 App::uses('Model', 'Model');
 App::uses('ClassRegistry', 'Utility');
@@ -80,18 +78,3 @@ class BehatConsoleOptionParser extends ConsoleOptionParser {
         return array($params, $args);
     }
 }
-/*
-class CakeBehatContext extends Behat\BehatBundle\Context\MinkContext
-{
-    function getModel($name) {
-        $model = ClassRegistry::init(array('class' => $name, 'ds' => 'test'));
-        return $model;
-    }
-    function truncateModel($name) {
-        $model = ClassRegistry::init(array('class' => $name, 'ds' => 'test'));
-        $table = $model->table;
-        $db = ConnectionManager::getDataSource('test_suite');
-        $db->truncate($table);
-    }
-}
-*/
