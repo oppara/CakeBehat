@@ -2,8 +2,6 @@
 
 define('BEHAT_VERSION',         'DEV');
 
-require dirname(dirname(dirname(__FILE__))).DS.'vendor/autoload.php';
-
 App::uses('Model', 'Model');
 App::uses('ClassRegistry', 'Utility');
 App::uses('ConnectionManager', 'Model');
