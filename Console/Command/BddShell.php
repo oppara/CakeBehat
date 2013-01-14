@@ -1,7 +1,6 @@
 <?php
 
 define('BEHAT_VERSION',         'DEV');
-define('CAKEBEHAT_ROOT',         dirname(__FILE__));
 
 require dirname(dirname(dirname(__FILE__))).DS.'vendor/autoload.php';
 
