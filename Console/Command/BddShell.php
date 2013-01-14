@@ -1,6 +1,6 @@
 <?php
 
-define('BEHAT_VERSION',         'DEV');
+define('BEHAT_VERSION', 'DEV');
 
 App::uses('Model', 'Model');
 App::uses('ClassRegistry', 'Utility');
@@ -14,7 +14,7 @@ class BddShell extends Shell {
         $args = $_SERVER['argv'];
         do {
             array_shift($args);
-        } while($args[0] != 'CakeBehat.bdd');
+        } while ($args[0] != 'CakeBehat.bdd');
 
         // Internal encoding to utf8
         mb_internal_encoding('utf8');
@@ -22,15 +22,15 @@ class BddShell extends Shell {
         $app = new Behat\Behat\Console\BehatApplication(BEHAT_VERSION);
         
         $command_option = false;
-        foreach($args as $option) {
+        foreach ($args as $option) {
             $option = str_replace("-", "", $option);
-            if($app->getDefinition()->hasOption($option) || $app->getDefinition()->hasShortcut($option)) {
+            if ($app->getDefinition()->hasOption($option) || $app->getDefinition()->hasShortcut($option)) {
                 $command_option = true;
                 break;
             }
         }
         // Load default config
-        if(!in_array('--config', $args) && !in_array('-c', $args) && !$command_option) {
+        if (!in_array('--config', $args) && !in_array('-c', $args) && !$command_option) {
             array_push($args, '--config', APP . DS . 'Config' . DS . 'behat.yml');
         }
         $input = new Symfony\Component\Console\Input\ArgvInput($args);
@@ -61,14 +61,13 @@ class BddShell extends Shell {
 		$db->config['prefix'] = $_prefix;
 		ClassRegistry::config(array('ds' => 'test_suite'));
 	}
-    
 
     public function getOptionParser() {
         $parser = new BehatConsoleOptionParser($this->name);
         return $parser;
     }
-
 }
+
 class BehatConsoleOptionParser extends ConsoleOptionParser {
     public function parse($argv, $command = null) {
         $params = $args = array();
