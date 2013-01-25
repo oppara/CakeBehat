@@ -2,6 +2,9 @@
     "name": "sizuhiko/CakeBehat",
     "type": "cakephp-plugin",
     "description": "CakeBehat is shell for testing CakePHP Application by Behat",
+    "extra": {
+        "installer-name": "CakeBehat"
+    },
     "authors": [
         {
             "name": "sizuhiko",
