@@ -1,4 +1,7 @@
 default:
+  paths:
+    features: ../Test/features
+    bootstrap: %behat.paths.features%/bootstrap
   context:
     parameters:
       javascript_session:   selenium
