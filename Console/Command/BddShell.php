@@ -2,12 +2,14 @@
 
 define('BEHAT_VERSION', 'DEV');
 
+require_once dirname(dirname(dirname(__FILE__))) . DS . 'vendor' . DS . 'autoload.php';
+
 App::uses('Model', 'Model');
 App::uses('ClassRegistry', 'Utility');
 App::uses('ConnectionManager', 'Model');
 
 class BddShell extends Shell {
-    
+
     public function main() {
         $this->_initDb();
 
@@ -20,7 +22,7 @@ class BddShell extends Shell {
         mb_internal_encoding('utf8');
 
         $app = new Behat\Behat\Console\BehatApplication(BEHAT_VERSION);
-        
+
         $command_option = false;
         foreach ($args as $option) {
             $option = str_replace("-", "", $option);
